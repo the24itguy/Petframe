@@ -1,36 +1,380 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>All Pets Motel & Spa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Maiden+Orange&family=Island+Moments&family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1517423568366-8b83523034fd?q=80') center/cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .logo {
+            font-family: 'Maiden Orange', cursive;
+            font-size: 7rem;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+            margin-bottom: 1rem;
+            animation: fadeInDown 1.5s ease;
+        }
+        
+        .tagline {
+            font-family: 'Island Moments', cursive;
+            font-size: 3.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+            animation: fadeInUp 1.5s ease;
+        }
+        
+        .section {
+            margin: 5rem auto;
+            padding: 4rem 2rem;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 1400px;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section-title {
+            font-family: 'Island Moments', cursive;
+            font-size: 5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #8B0000;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 4px;
+            background: #FFD700;
+            margin: 10px auto;
+        }
+        
+        .section-content {
+            font-size: 1.5rem;
+            line-height: 1.8;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .motel {
+            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('https://previews.123rf.com/images/skrotov/skrotov1902/skrotov190200459/118389979-two-adorable-little-cats-are-tired-and-sleeping-hugs-each-other-after-playing-around.jpg') center/cover;
+            border: 5px solid rgba(147, 11, 11, 0.7);
+        }
+        
+        .spa {
+            background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('https://images.unsplash.com/photo-1560743641-3914f2c45636?q=80') center/cover;
+            border: 9px solid rgba(147, 11, 11, 0.7);
+        }
+        
+        .contact {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?q=80') center/cover;
+            color: white;
+            border: 6px solid rgba(0, 0, 0, 0.96);
+            text-align: center;
+        }
+        
+        .contact .section-title {
+            color: #FFD700;
+        }
+        
+        .shop {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80') center/cover;
+            padding: 3rem 1rem;
+        }
+        
+        #market {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+        
+        .product {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 3px solid #FFD700;
+        }
+        
+        .product-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product h5 {
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1.8rem;
+            color: #8B0000;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #228B22;
+            margin: 0.5rem 0;
+        }
+        
+        .product .description {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .btn-warning {
+            background: #FFD700;
+            border: none;
+            color: #8B0000;
+            font-weight: bold;
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+        
+        .btn-warning:hover {
+            background: #FFA500;
+            transform: scale(1.05);
+        }
+        
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            font-size: 1.2rem;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .logo {
+                font-size: 5rem;
+            }
+            
+            .tagline {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 4rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 3.5rem;
+            }
+            
+            .tagline {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 3rem;
+            }
+            
+            .section-content {
+                font-size: 1.2rem;
+            }
+            
+            #market {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
-
 <body>
+    <!-- Header Section -->
+    <header class="header">
+        <h1 class="logo">All Pets Motel & SPA</h1>
+        <p class="tagline">*Every bark has its wag*</p>
+    </header>
     
-
-<div data-layer="Wireframe - 1" class="Wireframe1" style="width: 885px; height: 1592px; position: relative; background: #EFEFEF; background-blend-mode: normal, soft_light; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 50px; outline: 8px black solid; background-image: url(waterfall.webp)">
-  <div data-layer="All Pets Motel & SPA" class="AllPetsMotelSpa" style="width: 760px; height: 256px; left: 68px; top: 174px; position: absolute; color: black; font-size: 128px; font-family: Maiden Orange; font-weight: 400; word-wrap: break-word">All Pets Motel & SPA</div>
-  <div data-layer="*Every bark has its wag*" class="EveryBarkHasItsWag" style="width: 595px; height: 211px; left: 151px; top: 1269px; position: absolute; color: #171717; font-size: 96px; font-family: Maiden Orange; font-weight: 400; word-wrap: break-word">*Every bark has its wag*</div>
-</div>
-
-<div data-layer="Wireframe - 2" class="Wireframe2" style="width: 1626px; height: 889px; position: relative; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 50px; outline: 5px rgba(147.12, 11.32, 11.32, 0.70) solid; background-image: url(Puppy\Love.webp)>
-  <div data-layer="The Motel" class="TheMotel" style="width: 552.17px; height: 228.77px; left: 529.93px; top: -3px; position: absolute; transform: rotate(1deg); transform-origin: top left; color: black; font-size: 96px; font-family: Island Moments; font-weight: 400; word-wrap: break-word">The Motel</div>
-  <div data-layer="Suite A La - 50$ Suite a la Pup - 75$ Suite de La Furry Friend - 120$" class="SuiteALa50SuiteALaPup75SuiteDeLaFurryFriend120" style="width: 1320px; height: 560px; left: 230px; top: 260px; position: absolute"><span style="color: #130101; font-size: 96px; font-family: Island Moments; font-weight: 400; word-wrap: break-word">Suite A La - 50$<br/></span><span style="color: #FDFDFD; font-size: 46px; font-family: Island Moments; font-weight: 400; word-wrap: break-word"><br/>Suite a la Pup - 75$<br/><br/>Suite de La Furry Friend - 120$</span></div>
-</div>
-
-<div data-layer="Wireframe - 3" class="Wireframe3" style="width: 1882px; height: 1098px; position: relative; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 50px; outline: 9px rgba(147.12, 11.32, 11.32, 0.70) solid; background-image: url(images.jpg)">
-  <div data-layer="The Spa" class="TheSpa" style="width: 398px; height: 79px; left: 710px; top: 173px; position: absolute; color: #3C5BBE; font-size: 96px; font-family: League Spartan; font-weight: 400; word-wrap: break-word">The Spa</div>
-  <div data-layer="Half a Wag package -40 *Cut,Bath and Shampoo Full Wag Psckage- 75$ *HAW package +nails and massage 2 Wags and a Bark -150$ FWP + Hot Tub, Steak or Chicken Dinner, Doggypagne," class="HalfAWagPackage40CutBathAndShampooFullWagPsckage75HawPackageNailsAndMassage2WagsAndABark150FwpHotTubSteakOrChickenDinnerDoggypagne" style="width: 1370px; height: 750px; left: 100px; top: 270px; position: absolute"><span style="color: black; font-size: 64px; font-family: Inter; font-weight: 400; word-wrap: break-word">Half a Wag package -40<br/> </span><span style="color: black; font-size: 36px; font-family: Inter; font-weight: 400; word-wrap: break-word">*Cut,Bath and Shampoo<br/></span><span style="color: black; font-size: 64px; font-family: Inter; font-weight: 400; word-wrap: break-word"><br/>Full Wag Psckage- 75$<br/></span><span style="color: black; font-size: 36px; font-family: Inter; font-weight: 400; word-wrap: break-word">*HAW package +nails and massage<br/></span><span style="color: black; font-size: 64px; font-family: Inter; font-weight: 400; word-wrap: break-word"><br/>2 Wags and a Bark -150$<br/></span><span style="color: black; font-size: 36px; font-family: Inter; font-weight: 400; word-wrap: break-word">FWP + Hot Tub, Steak or Chicken Dinner, Doggypagne, </span></div>
-</div>
-
-<div data-layer="Wireframe - 4" class="Wireframe4" style="width: 1304px; height: 1922px; position: relative; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 8px; outline: 6px rgba(0, 0, 0, 0.96) solid; background-image: url(BirdsAndBeastsAsBrothers.PNG)">
-  <div data-layer="Contact Information" class="ContactInformation" style="left: 297px; top: 94px; position: absolute; color: #FFFBFB; font-size: 96px; font-family: League Spartan; font-weight: 400; word-wrap: break-word">Contact Information</div>
-  <div data-layer="For reservations call (513)555-4966 Email: petsspaday@petsmotel.com X- @APMSpa Facebook- All Pets Motel & Spa IG - @PetsSpa&Motel" class="ForReservationsCall5135554966EmailPetsspadayPetsmotelComXApmspaFacebookAllPetsMotelSpaIgPetsspaMotel" style="width: 1018px; height: 1125px; left: 251px; top: 797px; position: absolute; color: lab(67.81% -20.04 -30.87); font-size: 64px; font-family: Inter; font-weight: 400; word-wrap: break-word">For reservations  call<br/>(513)555-4966<br/><br/>Email: petsspaday@petsmotel.com<br/><br/>X- @APMSpa<br/>Facebook- All Pets Motel & Spa<br/>IG - @PetsSpa&Motel</div>
-</div>
-
-
-
+    <!-- Motel Section -->
+    <section class="section motel">
+        <h2 class="section-title">The Motel</h2>
+        <div class="section-content">
+            <p style="font-size: 3rem; text-align: center; font-family: 'Island Moments', cursive;">
+                Suite A La Cat - $50<br>
+                <span style="font-size: 1.8rem; display: block; margin: 1rem 0;">Comfortable stay with premium cat amenities</span><br>
+                Suite a la Pup - $75<br>
+                <span style="font-size: 1.8rem; display: block; margin: 1rem 0;">Luxury accommodations for your canine companion</span><br>
+                Suite de La Furry Friend - $120<br>
+                <span style="font-size: 1.8rem; display: block; margin: 1rem 0;">Ultimate luxury suite with personalized care</span>
+            </p>
+        </div>
+    </section>
+    
+    <!-- Spa Section -->
+    <section class="section spa">
+        <h2 class="section-title">The Spa</h2>
+        <div class="section-content">
+            <p style="font-size: 2.5rem; text-align: center;">
+                <strong>Half a Wag package - $40</strong><br>
+                <span style="font-size: 1.5rem; display: block; margin: 0.5rem 0;">* Cut, Bath and Shampoo</span><br>
+                
+                <strong>Full Wag Package - $75</strong><br>
+                <span style="font-size: 1.5rem; display: block; margin: 0.5rem 0;">* HAW package + nails and massage</span><br>
+                
+                <strong>2 Wags and a Bark - $150</strong><br>
+                <span style="font-size: 1.5rem; display: block; margin: 0.5rem 0;">FWP + Hot Tub, Steak or Chicken Dinner, Doggypagne</span>
+            </p>
+        </div>
+    </section>
+    
+    <!-- Shop Section -->
+    <section class="section shop">
+        <h2 class="section-title">Pet Boutique</h2>
+        <div id="market" class="container"></div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="section contact">
+        <h2 class="section-title">Contact Information</h2>
+        <div class="section-content">
+            <p style="font-size: 2.5rem; line-height: 1.6;">
+                For reservations call: <strong>(513) 555-4966</strong><br><br>
+                Email: <strong>petsspaday@petsmotel.com</strong><br><br>
+                X: <strong>@APMSpa</strong><br>
+                Facebook: <strong>All Pets Motel & Spa</strong><br>
+                Instagram: <strong>@PetsSpa&Motel</strong>
+            </p>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2023 All Pets Motel & Spa. All rights reserved.</p>
+        <p>Where every pet is treated like royalty!</p>
+    </footer>
+    
+    <!-- JavaScript for Product Display -->
+    <script>
+       
+        var shop = [
+            {
+                title: 'Premium Cat Tree',
+                image: 'https://images.unsplash.com/photo-1591871937573-74dbba515c4c?q=80',
+                price: '$129.99',
+                description: 'Multi-level cat tree with scratching posts and cozy perches'
+            },
+            {
+                title: 'Luxury Dog Bed',
+                image: 'https://images.unsplash.com/photo-1591955506264-3f5a6834570a?q=80',
+                price: '$89.95',
+                description: 'Orthopedic memory foam bed for large breed dogs'
+            },
+            {
+                title: 'Designer Pet Carrier',
+                image: 'https://images.unsplash.com/photo-1589923186203-8505ae9d839c?q=80',
+                price: '$75.50',
+                description: 'Stylish and secure carrier for cats and small dogs'
+            },
+            {
+                title: 'Gourmet Treat Box',
+                image: 'https://images.unsplash.com/photo-1570560258871-af6b3c6a82d1?q=80',
+                price: '$45.00',
+                description: 'Assortment of all-natural, vet-approved treats'
+            },
+            {
+                title: 'Interactive Toy Set',
+                image: 'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80',
+                price: '$34.99',
+                description: 'Stimulating puzzle toys for mental enrichment'
+            },
+            {
+                title: 'Premium Grooming Kit',
+                image: 'https://images.unsplash.com/photo-1560743641-3914f2c45636?q=80',
+                price: '$62.75',
+                description: 'Professional grooming tools for at-home spa days'
+            }
+        ];
+        
+        
+        var postHTML = "";
+        
+        
+        for (var i = 0; i < shop.length; i++) {
+            var heading = '<div class="product"><span><h5>' + shop[i].title + '</h5>';
+            var image = '<img src="' + shop[i].image + '" alt="' + shop[i].title + '"/>';
+            var price = '<p class="price">' + shop[i].price + '</p></span>';
+            var description = '<div class="description"><p>' + shop[i].description + '</p><button type="button" class="btn btn-warning">Add to Cart</button></div></div>';
+            
+            
+            var concatThis = heading + image + price + description;
+            postHTML = postHTML + concatThis;
+        }
+        
+        
+        document.getElementById('market').innerHTML = postHTML;
+    </script>
 </body>
-
-
 </html>
