@@ -6,8 +6,7 @@
     <title>All Pets Motel & Spa</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Maiden+Orange&family=Island+Moments&family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
-
-  <!-- Stye Section -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -20,6 +19,62 @@
             font-family: 'Inter', sans-serif;
             color: #333;
             overflow-x: hidden;
+            padding-top: 80px;
+        }
+        
+        /* Custom Navbar Styles */
+        .navbar {
+            background: rgba(0, 0, 0, 0.85);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            padding: 0.8rem 1rem;
+            transition: all 0.4s ease;
+        }
+        
+        .navbar-brand {
+            font-family: 'Maiden Orange', cursive;
+            font-size: 2.2rem;
+            color: #FFD700 !important;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-right: 2rem;
+        }
+        
+        .navbar-nav .nav-link {
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #f8f9fa !important;
+            margin: 0 0.8rem;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: #FFD700 !important;
+            background: rgba(139, 0, 0, 0.4);
+        }
+        
+        .navbar-nav .nav-link:hover:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40%;
+            height: 3px;
+            background: #FFD700;
+            border-radius: 2px;
+        }
+        
+        .navbar-toggler {
+            border: 2px solid #FFD700;
+            padding: 0.4rem 0.7rem;
+        }
+        
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 215, 0, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
         }
         
         .header {
@@ -33,6 +88,7 @@
             color: white;
             padding: 20px;
             position: relative;
+            margin-top: -80px;
         }
         
         .logo {
@@ -194,6 +250,160 @@
             font-size: 1.2rem;
         }
         
+        /* Multi-page styling */
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .service-content {
+            padding: 2rem;
+        }
+        
+        .service-card h3 {
+            font-family: 'Island Moments', cursive;
+            font-size: 2.5rem;
+            color: #8B0000;
+            margin-bottom: 1rem;
+        }
+        
+        .service-card p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn-service {
+            background: #FFD700;
+            color: #8B0000;
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-service:hover {
+            background: #FFA500;
+            transform: scale(1.05);
+        }
+        
+        .about-section {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('https://images.unsplash.com/photo-1551290464-66719418ca54?q=80') center/cover;
+            text-align: center;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .team-member {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #FFD700;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-form {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-control {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 1rem;
+            border-radius: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .form-control:focus {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: #FFD700;
+            box-shadow: 0 0 0 0.25rem rgba(255, 215, 0, 0.25);
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .social-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #FFD700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #8B0000;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px);
+            background: #FFA500;
+        }
+        
+        /* Animations */
         @keyframes fadeInDown {
             from {
                 opacity: 0;
@@ -216,6 +426,15 @@
             }
         }
         
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
         @media (max-width: 992px) {
             .logo {
                 font-size: 5rem;
@@ -227,6 +446,10 @@
             
             .section-title {
                 font-size: 4rem;
+            }
+            
+            .navbar-brand {
+                font-size: 1.8rem;
             }
         }
         
@@ -250,67 +473,357 @@
             #market {
                 grid-template-columns: 1fr;
             }
+            
+            .navbar {
+                padding: 0.6rem 0.8rem;
+            }
+            
+            .navbar-nav .nav-link {
+                margin: 0.3rem 0;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header Section -->
-    <header class="header">
-        <h1 class="logo">All Pets Motel & SPA</h1>
-        <p class="tagline">*Every bark has its wag*</p>
-    </header>
-    
-    <!-- Motel Section -->
-    <section class="section motel">
-        <h2 class="section-title">The Motel</h2>
-        <div class="section-content">
-            <p style="font-size: 3rem; text-align: center; font-family: 'Island Moments', cursive;">
-                Suite A La Cat - $50<br>
-                <span style="font-size: 1.8rem; display: block; margin: 1rem 0;">Comfortable stay with premium cat amenities</span><br>
-                Suite a la Pup - $75<br>
-                <span style="font-size: 1.8rem; display: block; margin: 1rem 0;">Luxury accommodations for your canine companion</span><br>
-                Suite de La Furry Friend - $120<br>
-                <span style="font-size: 1.8rem; display: block; margin: 1rem 0;">Ultimate luxury suite with personalized care</span>
-            </p>
+    <!-- Navbar Section -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-paw me-2"></i>All Pets Motel & Spa
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" data-page="home"><i class="fas fa-home me-1"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-page="motel"><i class="fas fa-bed me-1"></i> Motel</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-page="spa"><i class="fas fa-spa me-1"></i> Spa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-page="shop"><i class="fas fa-shopping-cart me-1"></i> Boutique</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-page="contact"><i class="fas fa-phone-alt me-1"></i> Contact</a>
+                    </li>
+                 
+                </ul>
+            </div>
         </div>
-    </section>
+    </nav>
     
-    <!-- Spa Section -->
-    <section class="section spa">
-        <h2 class="section-title">The Spa</h2>
-        <div class="section-content">
-            <p style="font-size: 2.5rem; text-align: center;">
-                <strong>Half a Wag package - $40</strong><br>
-                <span style="font-size: 1.5rem; display: block; margin: 0.5rem 0;">* Cut, Bath and Shampoo</span><br>
+    <!-- Home Page -->
+    <div id="home-page" class="page active">
+        <!-- Header Section -->
+        <header class="header">
+            <h1 class="logo">All Pets Motel & SPA</h1>
+            <p class="tagline">*Every bark has its wag*</p>
+            <div class="mt-5">
+                <button class="btn btn-warning btn-lg me-3 px-4 py-3" data-page="motel">
+                    <i class="fas fa-bed me-2"></i> View Motel Suites
+                </button>
+                <button class="btn btn-warning btn-lg px-4 py-3" data-page="spa">
+                    <i class="fas fa-spa me-2"></i> Explore Spa Packages
+                </button>
+            </div>
+        </header>
+        
+        <!-- Services Section -->
+        <section class="section">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="https://post.bark.co/wp-content/uploads/2014/03/222pawbar.jpg" alt="Pet Motel">
+                    <div class="service-content">
+                        <h3>Luxury Pet Motel</h3>
+                        <p>Give your pets a vacation of their own with our premium accommodation options.</p>
+                        <button class="btn btn-service" data-page="motel">
+                            View Suites <i class="fas fa-arrow-right ms-2"></i>
+                        </button>
+                    </div>
+                </div>
                 
-                <strong>Full Wag Package - $75</strong><br>
-                <span style="font-size: 1.5rem; display: block; margin: 0.5rem 0;">* HAW package + nails and massage</span><br>
+                <div class="service-card">
+                    <img src="https://www.apartments.com/blog/sites/default/files/styles/large/public/image/2023-06/berkshire-dilworth-pet-spa.jpg?itok=E2Ra4UZ5" alt="Pet Spa">
+                    <div class="service-content">
+                        <h3>Full-Service Spa</h3>
+                        <p>Pamper your pets with our premium grooming and relaxation treatments.</p>
+                        <button class="btn btn-service" data-page="spa">
+                            Spa Packages <i class="fas fa-arrow-right ms-2"></i>
+                        </button>
+                    </div>
+                </div>
                 
-                <strong>2 Wags and a Bark - $150</strong><br>
-                <span style="font-size: 1.5rem; display: block; margin: 0.5rem 0;">FWP + Hot Tub, Steak or Chicken Dinner, Doggypagne</span>
-            </p>
-        </div>
-    </section>
+                <div class="service-card">
+                    <img src="https://retaildesignblog.net/wp-content/uploads/2016/12/Pampered-Petz-pet-store-by-Rptecture-Architects-Sydney-Australia-720x480.jpg" alt="Pet Boutique">
+                    <div class="service-content">
+                        <h3>Pet Boutique</h3>
+                        <p>Premium products and accessories for your beloved pets.</p>
+                        <button class="btn btn-service" data-page="shop">
+                            Shop Now <i class="fas fa-arrow-right ms-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonials -->
+        <section class="section contact">
+            <h2 class="section-title">Happy Pet Parents</h2>
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="p-4 bg-light rounded">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah J." class="rounded-circle me-3" width="60">
+                                <div>
+                                    <h5 class="mb-0">Sarah J.</h5>
+                                    <div class="text-warning">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mb-0">"My golden retriever had the best time at the spa! He came back relaxed and smelling wonderful."</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="p-4 bg-light rounded">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Michael T." class="rounded-circle me-3" width="60">
+                                <div>
+                                    <h5 class="mb-0">Michael T.</h5>
+                                    <div class="text-warning">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mb-0">"The Suite de La Furry Friend was perfect for our cat during our vacation. We got daily updates!"</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="p-4 bg-light rounded">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="https://randomuser.me/api/portraits/women/67.jpg" alt="Jennifer L." class="rounded-circle me-3" width="60">
+                                <div>
+                                    <h5 class="mb-0">Jennifer L.</h5>
+                                    <div class="text-warning">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mb-0">"The boutique has the best selection of toys and treats. My dog goes crazy for their gourmet biscuits!"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
     
-    <!-- Shop Section -->
-    <section class="section shop">
-        <h2 class="section-title">Pet Boutique</h2>
-        <div id="market" class="container"></div>
-    </section>
+    <!-- Motel Page -->
+    <div id="motel-page" class="page">
+        <section class="section motel">
+            <h2 class="section-title">The Motel</h2>
+            <div class="section-content">
+                <p style="font-size: 3rem; text-align: center; font-family: 'Island Moments', cursive;">
+                    Suite A La Cat - $50<br>
+                    <span style="font-size: 1.8rem; display: block; margin: 1rem 0;">Comfortable stay with premium cat amenities</span><br>
+                    Suite a la Pup - $75<br>
+                    <span style="font-size: 1.8rem; display: block; margin: 1rem 0;">Luxury accommodations for your canine companion</span><br>
+                    Suite de La Furry Friend - $120<br>
+                    <span style="font-size: 1.8rem; display: block; margin: 1rem 0;">Ultimate luxury suite with personalized care</span>
+                </p>
+                
+                <div class="row mt-5">
+                    <div class="col-md-6">
+                        <h3 class="text-center mb-4" style="font-family: 'Island Moments', cursive; font-size: 2.5rem; color: #8B0000;">Amenities</h3>
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex align-items-center">
+                                <i class="fas fa-paw me-3 text-warning" style="font-size: 1.5rem;"></i>
+                                <span>Climate-controlled suites</span>
+                            </li>
+                            <li class="list-group-item d-flex align-items-center">
+                                <i class="fas fa-paw me-3 text-warning" style="font-size: 1.5rem;"></i>
+                                <span>Daily exercise and playtime</span>
+                            </li>
+                            <li class="list-group-item d-flex align-items-center">
+                                <i class="fas fa-paw me-3 text-warning" style="font-size: 1.5rem;"></i>
+                                <span>Premium bedding and toys</span>
+                            </li>
+                            <li class="list-group-item d-flex align-items-center">
+                                <i class="fas fa-paw me-3 text-warning" style="font-size: 1.5rem;"></i>
+                                <span>24/7 monitoring by staff</span>
+                            </li>
+                            <li class="list-group-item d-flex align-items-center">
+                                <i class="fas fa-paw me-3 text-warning" style="font-size: 1.5rem;"></i>
+                                <span>Custom meal plans available (Suite de La Furry Friend)</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-center">
+                            <img src="https://i0.wp.com/www.petboardinganddaycare.com/wp-content/uploads/2016/08/barkley1.jpg?fit=1600%2C1065&ssl=1" alt="Luxury Pet Suite" class="img-fluid rounded shadow" style="max-height: 400px;">
+                            <button class="btn btn-warning mt-4 px-4 py-3">
+                                <i class="fas fa-calendar-check me-2"></i> Book a Stay
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
     
-    <!-- Contact Section -->
-    <section class="section contact">
-        <h2 class="section-title">Contact Information</h2>
-        <div class="section-content">
-            <p style="font-size: 2.5rem; line-height: 1.6;">
-                For reservations call: <strong>(513) 555-4966</strong><br><br>
-                Email: <strong>petsspaday@petsmotel.com</strong><br><br>
-                X: <strong>@APMSpa</strong><br>
-                Facebook: <strong>All Pets Motel & Spa</strong><br>
-                Instagram: <strong>@PetsSpa&Motel</strong>
-            </p>
-        </div>
-    </section>
+    <!-- Spa Page -->
+    <div id="spa-page" class="page">
+        <section class="section spa">
+            <h2 class="section-title">The Spa</h2>
+            <div class="section-content">
+                <p style="font-size: 2.5rem; text-align: center;">
+                    <strong>Half a Wag package - $40</strong><br>
+                    <span style="font-size: 1.5rem; display: block; margin: 0.5rem 0;">* Cut, Bath and Shampoo</span><br>
+                    
+                    <strong>Full Wag Package - $75</strong><br>
+                    <span style="font-size: 1.5rem; display: block; margin: 0.5rem 0;">* HAW package + nails and massage</span><br>
+                    
+                    <strong>2 Wags and a Bark - $150</strong><br>
+                    <span style="font-size: 1.5rem; display: block; margin: 0.5rem 0;">FWP + Hot Tub, Steak or Chicken Dinner, Doggypagne</span>
+                </p>
+                
+                <div class="row mt-5">
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 border-0 shadow">
+                            <img src="https://s3.amazonaws.com/static.organiclead.com/Site-195d7088-d558-49e3-a367-5565e6bf13bd/shutterstock_1154247427_1_.jpg" class="card-img-top" alt="Basic Grooming">
+                            <div class="card-body">
+                                <h5 class="card-title text-center" style="color: #8B0000;">Basic Grooming</h5>
+                                <p class="card-text">Includes bath, brush, nail trim, ear cleaning, and sanitary trim. Perfect for regular maintenance.</p>
+                                <div class="text-center mt-3">
+                                    <span class="fw-bold fs-4 text-success">Starting at $39.95</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 border-0 shadow">
+                            <img src="https://www.dailypaws.com/thmb/Q9AFxvABZWAyBYAIdcXwrxBdvdo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/dog-spa-massage-1007122602-2000-dff86987e931458dbb141ed9032f0802.jpg" class="card-img-top" alt="Deluxe Spa">
+                            <div class="card-body">
+                                <h5 class="card-title text-center" style="color: #8B0000;">Deluxe Spa Package</h5>
+                                <p class="card-text">Full grooming plus aromatherapy bath, blueberry facial, paw treatment, and massage therapy.</p>
+                                <div class="text-center mt-3">
+                                    <span class="fw-bold fs-4 text-success">Starting at $74.95</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 border-0 shadow">
+                            <img src="https://www.shutterstock.com/image-photo/cool-drunk-french-bulldog-dog-600nw-718898275.jpg" class="card-img-top" alt="Ultimate Pampering">
+                            <div class="card-body">
+                                <h5 class="card-title text-center" style="color: #8B0000;">Ultimate Pampering</h5>
+                                <p class="card-text">Our top-tier package includes everything plus hot stone massage, gourmet treats, and champagne toast.</p>
+                                <div class="text-center mt-3">
+                                    <span class="fw-bold fs-4 text-success">Starting at $149.95</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Shop Page -->
+    <div id="shop-page" class="page">
+        <section class="section shop">
+            <h2 class="section-title">Pet Boutique</h2>
+            <div id="market" class="container"></div>
+        </section>
+    </div>
+    
+    <!-- Contact Page -->
+    <div id="contact-page" class="page">
+        <section class="section contact">
+            <h2 class="section-title">Contact Information</h2>
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="contact-form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Your Name">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Your Email">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Phone Number">
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option>Select Service</option>
+                                    <option>Motel Booking</option>
+                                    <option>Spa Appointment</option>
+                                    <option>Product Inquiry</option>
+                                    <option>General Question</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" rows="5" placeholder="Your Message"></textarea>
+                            </div>
+                            <button class="btn btn-warning w-100 py-3">
+                                <i class="fas fa-paper-plane me-2"></i> Send Message
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 class="mb-4" style="font-family: 'Island Moments', cursive; font-size: 2.8rem;">Get In Touch</h3>
+                        <p style="font-size: 1.8rem; line-height: 1.6;">
+                            <i class="fas fa-map-marker-alt me-3 text-warning"></i>11247 Reed Hartman Hwy, Cincinnati, OH<br><br>
+                            <i class="fas fa-phone-alt me-3 text-warning"></i> <strong>(513) 555-4966</strong><br><br>
+                            <i class="fas fa-envelope me-3 text-warning"></i> <strong>petsspaday@petsmotel.com</strong>
+                        </p>
+                        
+                        <h3 class="mt-5 mb-4" style="font-family: 'Island Moments', cursive; font-size: 2.8rem;">Business Hours</h3>
+                        <p style="font-size: 1.8rem; line-height: 1.6;">
+                            <i class="fas fa-clock me-3 text-warning"></i> Monday-Friday: 8am - 8pm<br>
+                            <i class="fas fa-clock me-3 text-warning"></i> Saturday: 9am - 6pm<br>
+                            <i class="fas fa-clock me-3 text-warning"></i> Sunday: 10am - 4pm
+                        </p>
+                        
+                        <div class="social-icons">
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+   
     
     <!-- Footer -->
     <footer class="footer">
@@ -319,9 +832,9 @@
         <p>Dean Family Enterprises</p>
     </footer>
     
-    <!-- JavaScript for Product Display -->
+    <!-- JavaScript for Product Display and Page Navigation -->
     <script>
-       
+        // Product data
         var shop = [
             {
                 title: 'Premium Cat Tree',
@@ -361,23 +874,70 @@
             }
         ];
         
-        
+        // Generate product HTML
         var postHTML = "";
-        
-        
         for (var i = 0; i < shop.length; i++) {
             var heading = '<div class="product"><span><h5>' + shop[i].title + '</h5>';
             var image = '<img src="' + shop[i].image + '" alt="' + shop[i].title + '"/>';
             var price = '<p class="price">' + shop[i].price + '</p></span>';
             var description = '<div class="description"><p>' + shop[i].description + '</p><button type="button" class="btn btn-warning">Add to Cart</button></div></div>';
             
-            
             var concatThis = heading + image + price + description;
             postHTML = postHTML + concatThis;
         }
-        
-        
         document.getElementById('market').innerHTML = postHTML;
+        
+        // Page navigation functionality
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId + '-page').classList.add('active');
+            
+            // Update active link in navbar
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-page') === pageId) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        // Set up event listeners for navigation
+        document.querySelectorAll('.nav-link[data-page]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                showPage(this.getAttribute('data-page'));
+            });
+        });
+        
+        // Set up event listeners for buttons with page navigation
+        document.querySelectorAll('button[data-page]').forEach(button => {
+            button.addEventListener('click', function() {
+                showPage(this.getAttribute('data-page'));
+            });
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(0, 0, 0, 0.95)';
+                navbar.style.padding = '0.5rem 1rem';
+            } else {
+                navbar.style.background = 'rgba(0, 0, 0, 0.85)';
+                navbar.style.padding = '0.8rem 1rem';
+            }
+        });
     </script>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
